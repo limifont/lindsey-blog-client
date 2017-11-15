@@ -1,0 +1,35 @@
+ul {
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  left: 50%;
+  text-align: center;
+}
+
+li {
+  display: block;
+  float: left;
+  list-style: none;
+  line-height: 3rem;
+  margin: 0;
+  padding: 1.25rem 5rem;
+  position: relative;
+  right: 50%;
+}
+
+.links {
+  border-width: 1px 0px;
+  border-style: solid;
+  border-color: black;
+  height: 5.5rem;
+  margin: 2rem 0;
+}
+
+.logo {
+  display: block; 
+  margin: auto;
+  width: 20%;  
+  border-radius: 50%;
+}
