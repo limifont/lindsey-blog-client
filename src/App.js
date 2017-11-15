@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Navbar from './components/Navbar.js';
 import './App.css';
 import Routes from './Routes';
-import { Nav, NavItem } from "react-bootstrap";
 
 import { authUser } from "./libs/awsLib";
 
@@ -19,10 +18,6 @@ class App extends Component {
 
   userHasAuthenticated = authenticated => {
     this.setState({ isAuthenticated: authenticated });
-  }
-
-  handleLogout = event => {
-    this.userHasAuthenticated(false);
   }
 
   async componentDidMount() {
