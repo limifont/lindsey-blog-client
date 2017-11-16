@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import LoaderButton from '../components/LoaderButton';
 import config from '../config';
-import { invokeApig } from '../libs/awsLib';
+import { invokeApig, s3Upload } from '../libs/awsLib';
 import './NewPost.css';
 
 export default class NewPost extends Component {
@@ -42,10 +42,15 @@ export default class NewPost extends Component {
     this.setState({ isLoading: true });
 
     try {
+      const uploadedFilename = this.file
+        ? (await s3Upload(this.file)).Location
+        : null;
+
       await this.createPost({
-        content: this.state.content
+        content: this.state.content,
+        attachment: uploadedFilename
       });
-      this.props.history.push('/admin');
+      this.props.history.push("/admin");
     } catch (e) {
       alert(e);
       this.setState({ isLoading: false });
