@@ -29,12 +29,13 @@ export default class Admin extends Component {
   }
 
   renderPostsList(posts) {
+  
   return [{}].concat(posts).map(
     (post, i) =>
       i !== 0
         ? <ListGroupItem
             key={post.postId}
-            href={`/posts/${post.postId}`}
+            href={`/admin/posts/${post.postId}`}
             onClick={this.handleNoteClick}
             header={post.content.trim().split("\n")[0]}
           >
@@ -42,8 +43,8 @@ export default class Admin extends Component {
           </ListGroupItem>
         : <ListGroupItem
             key="new"
-            href="/posts/new"
-            onClick={this.handleNoteClick}
+            href="/admin/posts/new"
+            onClick={this.handlePostClick}
           >
             <h4>
               <b>{"\uFF0B"}</b> Create a new post
@@ -52,7 +53,7 @@ export default class Admin extends Component {
   );
 }
 
-handleNoteClick = event => {
+handlePostClick = event => {
   event.preventDefault();
   this.props.history.push(event.currentTarget.getAttribute("href"));
 }
